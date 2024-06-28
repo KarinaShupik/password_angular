@@ -11,14 +11,16 @@ export class PasswordCheckerComponent {
   isWeak: boolean = false;
   isMedium: boolean = false;
   isStrong: boolean = false;
+  isShort: boolean = false;
 
   checkStrength() {
     this.isEmpty = this.password.length === 0;
+    this.isShort = this.password.length > 0 && this.password.length < 8;
     this.isWeak = false;
     this.isMedium = false;
     this.isStrong = false;
 
-    if (this.password.length < 8) {
+    if (this.isShort) {
       return;
     }
 
